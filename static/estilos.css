@@ -1,5 +1,5 @@
 body{	
-	background-image: url(flor.jpg);
+	background-image: url(corazones.gif);
 	background-size: cover;
 
 
@@ -7,9 +7,10 @@ body{
 
 #chica{
 	border-radius: 100%;	
-	display: inline-block;
-	margin: 10px;
+	display: inline;
 	float: left;
+	margin-bottom: 20px;
+
 }
 
 h2{
@@ -20,26 +21,114 @@ h2{
 	color:white;
 }
 
-.container{
+.form1{
  background-color: blueviolet;
  padding: 10px;
  width: 700px;
- height: 300px;
+ height: 200px;
  margin-top: 30px;
  border-radius: 20px;
+ border: 5px solid white;
+ margin: auto;
 }
+
+.contenedor{
+background-color: #FA8072 ;
+padding: 10px;
+width: 700px;
+height: 250px;
+margin-top: 50px;
+border-radius: 20px;
+border: 5px solid white;
+margin:auto;
+}
+
+.message {
+
+	background: 	#66CDAA	;  
+	border-radius: 10px;
+	padding: 5px;
+	float: left;
+
+}
+
+
+.comment{
+
+	background: #AFEEEE	  ;  
+	border-radius: 10px;
+	padding: 5px;
+	float: right;
+}
+
+
 
 input{
 border-radius: 10px;
+}
 
+.btnS{
+
+background-color: #32CD32  ;
+color: white;
+padding: 3px;
+width: 70px;
 }
 
 .form2{
 
-
 	float:right;
+	margin-top: 15px;
+
 }
 
+
+
+
+h6{
+
+	font-size: 20px;
+	font-family: lucida handwriting;
+	font-weight: bold;
+	margin-bottom: 20px;
+	padding: 0;
+
+}
+
+q{
+font-family: comic sans MS;
+font-size: 18px;
+font-weight: bold;
+}
+
+cite{
+
+font-family: calibri;
+font-style: oblique;
+font-weight: bold;
+
+}
+
+.btnB{
+
+	text-decoration: none;
+	background-color:#FF4500;
+	color: white;
+	border-radius: 10px;
+	padding: 5px;
+	font-size: 10px;
+
+}
+
+.comentario{
+width: 600;
+height: 100;
+margin-top: 60px;
+background-color: yellow;
+border-radius: 10px;
+border: 1px solid black;
+
+}
 
 
 

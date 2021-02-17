@@ -19,31 +19,72 @@
 
 <body>
 
-  <img id="chica" src="chica.gif" width="250px" heigth="250px" alt=" imagen de chica superpoderosa">
 
-  <form class="container" action="/" method="POST">
-    <h2>The Dojo Mensagge Board</h2>
-    <input class="col-3" name="author" type="text" placeholder="Nombre">
-    <input class="col-6" name="message" type="text" placeholder="Mensaje">
-    <input class="col-2" type="submit" placeholder="Enviar">
-  </form>
+
+  <div>
+    <form class="form1" class="container" action="/" method="POST">
+      <h2>The Dojo Mensagge Board</h2>
+      <img id="chica" src="chica.gif" width="150px" heigth="150px" alt=" imagen de chica superpoderosa">
+      <input class="col-3" required name="author" type="text" placeholder="Nombre">
+      <input class="col-6" required name="message" type="text" placeholder="Mensaje">
+      <input class="btnS" class="col-2" type="submit" placeholder="Enviar">
+
+      <%if(aviso!=""){%>
+        <div class="alert alert-success">
+          <%=aviso%>
+        </div>
+        <%}%>
+    </form>
+
+
+    <%if(aviso=""){%>
+      <div class="alert alert-danger">
+        <%=aviso%>
+      </div>
+      <%}%>
+  </div>
 
   <%for(let post of mensajes){%>
-    <div class="container">
-      <div>
-        <h6>Nuevo Mensaje</h6>
-        <q class="mensaje">Mensaje<%=post.message%></q>
-        <cite> ~ <%=post.author%> </cite>
-        <a class="btnB" href="/delete/<%=post.id%>">Borrar</a>
+    <div class="contenedor">
+      <div class="container">
+        <h6>Mensaje</h6>
+        <img id="chica" src="chica.gif" width="100px" heigth="100px" alt=" imagen de chica superpoderosa">
+        <div class="message">
+          <q>
+            <%=post.message%>
+          </q>
+          <cite> ~ <%=post.author%> </cite>
+          <a class="btnB" href="/delete/<%=post.id%>">Borrar</a>
+        </div>
       </div>
 
-      <div class="form2">
-        <form action="/" method="POST">
-          <input class="col-3" name="name" type="text" placeholder="Nombre">
-          <input class="col-4" name="comment" type="text" placeholder="Mensaje">
-          <input class="col-3" type="submit" placeholder="Enviar">
-        </form>
-      </div>
+
+
+      <form class="form2" action="/comentarios" method="POST">
+        <input required name="messageId" type="hidden" value="<%=post.id%>">
+        <input class="col-3" required name="name" type="text" placeholder="Nombre">
+        <input class="col-6" required name="comment" type="text" placeholder="Mensaje">
+        <input class="btnS" class="col-2" type="submit" placeholder="Enviar">
+      </form>
+      <br>
+      <br>
+      <%for(let cita of post.comments){%>
+
+        <div class="container">
+          <h6> Comentario</h6>
+          <div class="comment">
+
+            <q>
+              <%=cita.comment%>
+            </q>
+            <cite> ~ <%=cita.name%> </cite>
+            <a class="btnB" href="/delete/<%=cita.comment%>">Borrar</a>
+          </div>
+        </div>
+
+
+        <%}%>
+
     </div>
     <%}%>
 
