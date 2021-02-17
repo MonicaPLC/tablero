@@ -55,13 +55,24 @@ router.get('/', async (req, res) => {
 
 });
 
-router.get("/delete/:id", async (req, res) => { //ruta borrar
-  const borrar= await Message.findByPk(req.params.id);
-  await borrar.destroy();   
-  req.flash("aviso",`El mensaje ${borrar.message} fue eliminado con éxito`)
-  res.redirect("/")
+router.get("/delete/:id", async (req, res) => { 
 
+  const borrar= await Message.findByPk(req.params.id);
+  const borrar_o= await Comment.findByPk(req.params.id);
+  await borrar.destroy();
+  await borrar_o.destroy();  
+  req.flash("aviso",`El mensaje ${borrar.message} fue eliminado con éxito`)
+  req.flash("aviso",`El mensaje ${borrar_o.comment} fue eliminado con éxito`)
+  res.redirect("/")
 });
+
+router.get("/delete/comment/:id", async (req, res) => { 
+  const borrar_o= await Comment.findByPk(req.params.id);
+  await borrar_o.destroy();  
+ req.flash("aviso",`El mensaje ${borrar_o.comment} fue eliminado con éxito`)
+  res.redirect("/")
+});
+
 
 
 module.exports=router;
