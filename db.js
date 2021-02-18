@@ -17,8 +17,8 @@ const Message = MessageModel(sql, Sequelize);
 const Comment = CommentModel(sql, Sequelize);
 
 
-// relación uno a muchos
-Message.hasMany(Comment);
+// relación uno a muchos. Si no crea la llave foránea, pasarlo después del sync.
+Message.hasMany(Comment); 
 Comment.belongsTo(Message);
 
 //  después sincronizamos nuestro código con la base de datos
@@ -26,6 +26,7 @@ sql.sync()
 .then(() => {
   console.log('Tablas creada. Base de datos en uso');
 });
+
 
 
 // finalmente acá listamos todos los modelos que queremos exportar

@@ -19,30 +19,32 @@
 
 <body>
 
-
-
   <div>
     <form class="form1" class="container" action="/" method="POST">
       <h2>The Dojo Mensagge Board</h2>
       <img id="chica" src="chica.gif" width="150px" heigth="150px" alt=" imagen de chica superpoderosa">
-      <input class="col-3" required name="author" type="text" placeholder="Nombre">
-      <input class="col-6" required name="message" type="text" placeholder="Mensaje">
+      <input class="col-3" name="author" type="text" placeholder="Nombre">
+      <input class="col-6" name="message" type="text" placeholder="Mensaje">
       <input class="btnS" class="col-2" type="submit" placeholder="Enviar">
 
-      <%if(aviso!=""){%>
-        <div class="alert alert-success">
-          <%=aviso%>
+      <!---si el error viene con datos erroneos-->
+      <%if(error!=""){%>
+        <div class="alert alert-danger">
+          <%=error%>
         </div>
         <%}%>
-    </form>
+          <!--si borró (en este caso) entonces aviso-->
+          <%if(aviso!=""){%>
+            <div class="alert alert-success">
+              <%=aviso%>
+            </div>
+            <%}%>
 
-
-    <%if(aviso=""){%>
-      <div class="alert alert-danger">
-        <%=aviso%>
-      </div>
-      <%}%>
   </div>
+
+  </form>
+
+
 
   <%for(let post of mensajes){%>
     <div class="contenedor">
@@ -62,8 +64,8 @@
 
       <form class="form2" action="/comentarios" method="POST">
         <input required name="messageId" type="hidden" value="<%=post.id%>">
-        <input class="col-3" required name="name" type="text" placeholder="Nombre">
-        <input class="col-6" required name="comment" type="text" placeholder="Mensaje">
+        <input class="col-3" name="name" type="text" placeholder="Nombre">
+        <input class="col-6" name="comment" type="text" placeholder="Mensaje">
         <input class="btnS" class="col-2" type="submit" placeholder="Enviar">
       </form>
       <br>

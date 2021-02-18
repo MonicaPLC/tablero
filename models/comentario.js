@@ -11,10 +11,33 @@ module.exports = (sql, type) => {
     name:{
        type: type.STRING,
       allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Debe ingresar nombre"
+        },
+        len :{
+          arg:[2],
+          msg:"el nombre debe contener al menos dos letras"
+
+        }
+      }
     },
     comment:{
       type: type.STRING,
       allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Debe ingresar un comentario"
+        },
+        len :{
+          arg:[1],
+          msg:"el nombre debe contener al menos una letra"
+
+        }
+      }
+
+
+
    },
   
      },
